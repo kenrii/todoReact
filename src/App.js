@@ -2,17 +2,22 @@ import React, {useState} from "react";
 import "./styles.css";
 import {TodoList} from "./TodoList/TodoList";
 import {AddInput} from "./AddInput/index";
-
+import arrayMove from 'array-move';
 // Voit käyttää tätä listaa ykköstehtävässä.
 // eslint-disable-next-line
 
-let exampleToDoList = [
-  'Renderöi lista',
+
+/*let exampleToDoList = {
+   items: ['Renderöi lista',
+          'Toteuta lisäyskomponentti',
+          'Toteuta valmiiksi merkkaaminen',
+          'Bonus: järjestettävä lista'
+],};*/
+let exampleToDoList = 
+  ['Renderöi lista',
   'Toteuta lisäyskomponentti',
   'Toteuta valmiiksi merkkaaminen',
-  'Bonus: järjestettävä lista'
-];
-
+  'Bonus: järjestettävä lista'];
 
 
 export default function App() {
@@ -27,6 +32,11 @@ export default function App() {
   // Allaolevaan rakenteeseen lisätään komponentit listaelementille
   // ja lisäyselementille.
   const [todos, setTodos] = useState(exampleToDoList);
+
+  function moveItems({oldIndex, newIndex}) {
+    const ArrayMove = require("array-move")
+    exampleToDoList = arrayMove(exampleToDoList, oldIndex, newIndex)
+  }
 
   function addListItem(item) {
     const value = item.text
