@@ -1,14 +1,19 @@
-import React from "react";
+import React, {useState} from "react";
 import "./styles.css";
+import {TodoList} from "./TodoList/TodoList";
+import {AddInput} from "./AddInput/index";
 
 // Voit käyttää tätä listaa ykköstehtävässä.
 // eslint-disable-next-line
-const exampleToDoList = [
+
+let exampleToDoList = [
   'Renderöi lista',
   'Toteuta lisäyskomponentti',
   'Toteuta valmiiksi merkkaaminen',
   'Bonus: järjestettävä lista'
 ];
+
+
 
 export default function App() {
   // Tee tähän reactin tilaan kytkeytyvä useState-hook,
@@ -21,9 +26,23 @@ export default function App() {
 
   // Allaolevaan rakenteeseen lisätään komponentit listaelementille
   // ja lisäyselementille.
+  const [todos, setTodos] = useState(exampleToDoList);
+
+  function addListItem(item) {
+    const value = item.text
+    if (exampleToDoList.includes(value) || value === "") {
+      alert("The input value is either empty or it already exists  in the list.");
+    }else{
+      exampleToDoList = exampleToDoList.concat([value]);
+      setTodos(exampleToDoList)
+    }
+  };
+
   return (
     <div className="App">
       <h1>TO-DOH</h1>
+      <AddInput addListItem={addListItem} />
+      <TodoList todoList={todos} />
     </div>
   );
 }

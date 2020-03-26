@@ -1,13 +1,17 @@
 import React from "react";
+import {TodoItem} from "./TodoItem"
 
 // Tuo tähän elementtiin propsina todo-listasi elementit.
 // Tuota lista divin sisälle listan map-funktiolla. Jokainen
 // listan elementti on TodoItem-komponentti, joka löytyy
 // TodoItem.jsx-tiedostosta.
-export default function(props) {
+
+
+
+export function TodoList({ todoList }) {
   return (
-    <div>
-      Lista tulee tähän!
-    </div>
+    todoList.map(todo => {
+      return <TodoItem todo={todo} key={todo.toString()} />
+    })
   );
 }
