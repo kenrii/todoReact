@@ -13,14 +13,15 @@ import arrayMove from 'array-move';
           'Toteuta valmiiksi merkkaaminen',
           'Bonus: järjestettävä lista'
 ],};*/
-let exampleToDoList = 
-  ['Renderöi lista',
+let exampleToDoList = {
+  items: ['Renderöi lista',
   'Toteuta lisäyskomponentti',
   'Toteuta valmiiksi merkkaaminen',
-  'Bonus: järjestettävä lista'];
-
+  'Bonus: järjestettävä lista'],
+};
 
 export default function App() {
+
   // Tee tähän reactin tilaan kytkeytyvä useState-hook,
   // joka pitää sisällään Todo-listan elementit.
 
@@ -32,27 +33,30 @@ export default function App() {
   // Allaolevaan rakenteeseen lisätään komponentit listaelementille
   // ja lisäyselementille.
   const [todos, setTodos] = useState(exampleToDoList);
-
-  function moveItems({oldIndex, newIndex}) {
-    const ArrayMove = require("array-move")
-    exampleToDoList = arrayMove(exampleToDoList, oldIndex, newIndex)
-  }
-
+    
+  // Funktio, joka lisää itemin listaan
   function addListItem(item) {
     const value = item.text
-    if (exampleToDoList.includes(value) || value === "") {
+    if (exampleToDoList.items.includes(value) || value === "") {
       alert("The input value is either empty or it already exists  in the list.");
     }else{
-      exampleToDoList = exampleToDoList.concat([value]);
+      exampleToDoList = {items: exampleToDoList.items.concat([value])};
       setTodos(exampleToDoList)
     }
+  };
+  
+  // Funktio, joka järjestelee itemit uusille paikoilleen
+  const onSortEnd = ({oldIndex, newIndex}) => {
+    setTodos(({items}) => ({
+      items: arrayMove(items, oldIndex, newIndex),
+    }));
   };
 
   return (
     <div className="App">
       <h1>TO-DOH</h1>
       <AddInput addListItem={addListItem} />
-      <TodoList todoList={todos} />
+      <TodoList todoList={todos} onSortEnd={onSortEnd} />
     </div>
   );
 }
