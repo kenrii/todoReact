@@ -16,13 +16,13 @@ const SortableContainer = sortableContainer(({children}) => {
 
 export function TodoList(props) {
   const todoList = props.todoList
-  const onSortEnd = props.onSortEnd
+  const moveItems = props.moveItems
   const state = {items: todoList.items}
 
   const {items} = state;
 
   return (
-    <SortableContainer onSortEnd={onSortEnd} useDragHandle>
+    <SortableContainer onSortEnd={moveItems} useDragHandle>
     {items.map((value, index) => (
         <TodoItem todo={value} index={index} key={value}/>
     ))}

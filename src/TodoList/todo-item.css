@@ -5,6 +5,11 @@
   width: 100%;
   max-width: 400px;
   cursor: pointer;
+  font-family: 'Times New Roman', Times, serif;
+  word-break: break-all;
+}
+span {
+  color: #878684;
 }
 
 .todo-item:hover {

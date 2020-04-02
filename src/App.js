@@ -46,7 +46,7 @@ export default function App() {
   };
   
   // Funktio, joka järjestelee itemit uusille paikoilleen
-  const onSortEnd = ({oldIndex, newIndex}) => {
+  const moveItems = ({oldIndex, newIndex}) => {
     setTodos(({items}) => ({
       items: arrayMove(items, oldIndex, newIndex),
     }));
@@ -56,7 +56,7 @@ export default function App() {
     <div className="App">
       <h1>TO-DOH</h1>
       <AddInput addListItem={addListItem} />
-      <TodoList todoList={todos} onSortEnd={onSortEnd} />
+      <TodoList todoList={todos} moveItems={moveItems} />
     </div>
   );
 }
