@@ -36,8 +36,9 @@ export default function App() {
     
   // Funktio, joka lisää itemin listaan
   function addListItem(item) {
-    const value = item.text
-    if (exampleToDoList.items.includes(value) || value === "") {
+    const value = item.text;
+    //const spaceChecker = value.split(" ").join("");
+    if (exampleToDoList.items.includes(value) || !((value && value.trim() !== ""))) {
       alert("The input value is either empty or it already exists  in the list.");
     }else{
       exampleToDoList = {items: exampleToDoList.items.concat([value])};

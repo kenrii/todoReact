@@ -18,7 +18,7 @@ export function AddInput(props) {
   // Tyylittelyyn löytyy luokkia oheisesta css-tiedostosta.
   return (
     <div className="input-container">
-      <input className="input-field" type="text" onChange={handleInputValue} />
+      <input className="input-field" type="text"onChange={handleInputValue}/>
       <button onClick={() => props.addListItem(input)}> Add todo </button>
     </div>
   );

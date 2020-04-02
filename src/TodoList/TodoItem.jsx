@@ -8,7 +8,7 @@ import {
 // Tässä komponentissa majailee yksittäinen listalla oleva
 // elementti. 
 
-const DragHandle = sortableHandle(() => <span><b>::      </b></span>);
+const DragHandle = sortableHandle(() => <span><b>::     </b></span>);
 
 export function TodoItem(props) {
   // Voit toteuttaa tehtävän merkkaamisen
