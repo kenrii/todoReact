@@ -37,11 +37,13 @@ export default function App() {
   // Funktio, joka lisää itemin listaan
   function addListItem(item) {
     const value = item.text;
+    console.log(((value && exampleToDoList.items.includes(value.trim()))))
+    console.log(exampleToDoList.items.includes(value.trim()))
     //const spaceChecker = value.split(" ").join("");
-    if (exampleToDoList.items.includes(value) || !((value && value.trim() !== ""))) {
+    if ((value && exampleToDoList.items.includes(value.trim())) || !((value && value.trim() !== ""))) {
       alert("The input value is either empty or it already exists  in the list.");
     }else{
-      exampleToDoList = {items: exampleToDoList.items.concat([value])};
+      exampleToDoList = {items: exampleToDoList.items.concat([value.trim()])};
       setTodos(exampleToDoList)
     }
   };
