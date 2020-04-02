@@ -34,12 +34,15 @@ export default function App() {
   // ja lisäyselementille.
   const [todos, setTodos] = useState(exampleToDoList);
     
-  // Funktio, joka lisää itemin listaan
+  // Funktio, joka lisää itemin listaan.
+  // Varmistetaan ettei sama arvo ole jo valmiiksi listassa. 
+  // Katsotaan onko arvo undefined ja onko se jo listassa.
+  // Esim arvot "react-kurssi" ja "   react-kurssii   "(whitespaceä)
+  // Yllä olevat arvojen tapauksessa jälkimmäistä ei hyväksytä listaan.
+  // Koska se on sama asia kuin ensimmäinen paitsi siinä on whitespacea.
+  // Myöskään pelkkää tekstikentän tyhjäksi jättämistä ei hyväksytä. 
   function addListItem(item) {
     const value = item.text;
-    console.log(((value && exampleToDoList.items.includes(value.trim()))))
-    console.log(exampleToDoList.items.includes(value.trim()))
-    //const spaceChecker = value.split(" ").join("");
     if ((value && exampleToDoList.items.includes(value.trim())) || !((value && value.trim() !== ""))) {
       alert("The input value is either empty or it already exists  in the list.");
     }else{
